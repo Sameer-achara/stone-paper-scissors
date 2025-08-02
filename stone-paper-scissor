@@ -13,8 +13,8 @@ def check(user,comp):
 
 comp=random.randint(0,2)
 name=input("Enter your name:")
-print("Ohh..",name)
-print("OK You are ready to play stone, paper and scissor game")
+print("Ok",name)
+print("You are ready to play stone, paper and scissor game")
 user=int(input("Chosse: 0 for stone, 1 for paper, 2 for scissor:\n"))
 score=check(comp,user)
 print("Computer:",comp)

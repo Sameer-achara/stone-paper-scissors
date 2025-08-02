@@ -1,0 +1,27 @@
+import random
+def check(user,comp):
+    if(user == comp):
+        return 0
+    elif(user==0 and comp==1):
+       return -1
+    elif(user==1 and comp==2):
+     return -1
+    elif(user==2 and comp==0):
+      return -1
+    else:
+        return 1
+
+comp=random.randint(0,2)
+name=input("Enter your name:")
+print("Ohh..",name)
+print("OK You are ready to play stone, paper and scissor game")
+user=int(input("Chosse: 0 for stone, 1 for paper, 2 for scissor:\n"))
+score=check(comp,user)
+print("Computer:",comp)
+print("User:",user)
+if(score==1):
+   print("You Won",name)
+elif(score==0):
+   print("It's Tie",name,"Try again!")
+else:
+   print("You Lose",name)

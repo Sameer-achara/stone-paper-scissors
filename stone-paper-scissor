@@ -1,4 +1,5 @@
 import random
+import emoji
 def check(user,comp):
     if(user == comp):
         return 0
@@ -9,26 +10,43 @@ def check(user,comp):
     elif(user==2 and comp==0):
       return -1
     else:
-        return 1
+     return 1
 def main():
-while True:
-  comp=random.randint(0,2)
+  compscore=0
+  userscore=0
+  round=0
   name=input("Enter your name:")
-  print("Ok",name)
+  print("OK!",name)
   print("You are ready to play stone, paper and scissor game")
-  user=int(input("Chosse: 0 for stone, 1 for paper, 2 for scissor:\n"))
-  score=check(user,comp)
-  print("Computer:",comp)
-  print("User:",user)
-  if(score==1):
-    print("You Won",name)
-  elif(score==0):
+  while True:
+   comp=random.randint(0,2)
+   user=int(input("Chosse: 0 for stone, 1 for paper, 2 for scissor:\n"))
+   score=check(user,comp)
+   choices = ["Stone 🪨", "Paper 📄", "Scissor ✂️"]
+   print("Computer:", choices[comp])
+   print("User:", choices[user])
+   if(score==1):
+    print(emoji.emojize(f"You Win!{name} :trophy:", language='alias'))
+    userscore += 1
+   elif(score==0):
     print("It's Tie",name,"Try again!")
-  else:
-    print("You Lose",name)
- again = input("Do you want to play again? (y/n): ").lower()
-        if again != 'y':
-            print("Thanks for playing,", name)
-            break
-main()
-
+   else:
+    print(emoji.emojize(f"You Lose! {name} :pensive:",language='alias'))
+    compscore +=1
+   round +=1  
+   again = input("Do you want to play again? (y/n): ").lower()
+   if again != 'y':
+     print("Thanks for playing,", name)
+     print("============== Scorecard ==============")
+     print("Total Rounds:",round)
+     print("You Won The",userscore,"Rounds")
+     print("And Computer Won The",compscore,"Rounds")
+     if(compscore>userscore):
+      print(emoji.emojize("Computer is Overall Winner :disappointed:",language='alias'))
+     elif(userscore>compscore):
+      print(emoji.emojize("You Are Overall Winner :100:",language='alias'))
+     else:
+      print("That's Tie Between You and Computer")
+    
+     break
+main()    
